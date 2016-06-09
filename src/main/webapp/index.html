@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>todo</title>
+    <link rel="stylesheet"
+          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="css/todos.css">
+    <script src="js/todos.js"></script>
+
+</head>
+<body>
+
+    <div id="container">
+    	<p>
+    		This is a student project for RESTful API demonstration purposes.<br>
+    		Git repository: <a href="https://github.com/freeuni-sdp/iot-weather">https://github.com/freeuni-sdp/iot-weather</a>
+    	</p>
+    
+        <p>
+            <span><strong>Select REST service to use:</strong></span><br>
+            <input type="radio" name="uriradio" value="webapi/temperature" checked="checked">Get current temperature. URI: webapi/temperature<br>
+            <input type="radio" name="uriradio" value="webapi/rain">Get rain chance. URI: webapi/rain
+        </p>
+
+        <p>
+            <span>
+                Click on item to get.
+            </span>
+        </p>
+
+        <button type="button" id="create-button">get</button>
+        <ul id="task-list"></ul>
+    </div>
+
+</body>
+</html>
