@@ -26,5 +26,8 @@
         <module name="iot-weather" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="iot-weather" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

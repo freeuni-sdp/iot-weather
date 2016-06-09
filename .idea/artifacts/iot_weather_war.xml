@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="iot-weather:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="iot-weather.war">
+      <element id="artifact" artifact-name="iot-weather:war exploded" />
+    </root>
+  </artifact>
+</component>
