@@ -1,0 +1,35 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# iot-weather
+
+iot-weather is a simple API, which helps you get some weather information.
+
+## Get Current Temperature [/temperature]
+
+### Get Current Temperature [GET]
+
+returns current temperature in celsius and farenheit.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "temp_c": "15",
+                "temp_f": "59"
+            }
+        ]
+
+## Rain [/rain]
+
+### Get Next 24 Hours Raining Forecast [GET]
+
+returns "yes" or "no" whether it will rain in the next 24 hours.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "rain": "yes"
+            }
+        ]
