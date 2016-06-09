@@ -1,9 +1,7 @@
 language: java
 
-jdk:
-  - oraclejdk8
+deploy:
+   provider: heroku
+   api_key: "64aa0eff-5286-42e5-80b4-70af95ca12df"
+   app: iot-weather
 
-script: mvn package
-
-after_success:
-  - mvn clean test
