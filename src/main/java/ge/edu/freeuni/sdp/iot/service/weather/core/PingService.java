@@ -1,4 +1,4 @@
-package ge.edu.freeuni.sdp.weather.core;
+package ge.edu.freeuni.sdp.iot.service.weather.core;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;

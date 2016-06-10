@@ -1,16 +1,13 @@
 /**
  * Created by Meko on 10/06/2016.
  */
-import ge.edu.freeuni.sdp.weather.core.PingService;
-import java.util.*;
+import ge.edu.freeuni.sdp.iot.service.weather.core.PingService;
 
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.*;
 import static org.junit.Assert.*;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
-import com.microsoft.azure.storage.StorageException;
 import org.junit.Test;
 public class test extends JerseyTest{
 
