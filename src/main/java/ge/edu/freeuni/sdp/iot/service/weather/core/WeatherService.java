@@ -54,7 +54,7 @@ public class WeatherService {
     private String getCoordinates(String house_id){
         String changed_coordinates = "";
         try {
-            URL url = new URL("http://iot-house-registry.apiblueprint.org/houses/" + house_id); // TODO constantebshi
+            URL url = new URL("http://private-3c24-iothouseregistry.apiary-mock.com/houses/" + house_id); // TODO constantebshi
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             String json = "";
             String part;

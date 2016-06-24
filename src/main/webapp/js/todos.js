@@ -1,4 +1,4 @@
-var serviceUri = "webapi/memtodos";
+/* var serviceUri = "webapi/memtodos";
 
 function doFill() {
     $("#task-list").empty();
@@ -109,3 +109,4 @@ $(function () {
     doFill();
 
 });
+*/
