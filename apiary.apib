@@ -14,12 +14,16 @@ Returns html status code 200, if the server is alive.
 + Response 200 (application/json)
 
 
-## Temperature [/temperature]
+## Temperature [/houses/{house_id}/temperature]
 
 ### Get Current Temperature [GET]
 
 returns current temperature in celsius and farenheit.
 
++ Parameter
+    + house_id (required, string, `"d28f9e91-ea20-43cf-abf5-24f3d659afef"`)
+    String returned in Location header field.
+    
 + Response 200 (application/json)
 
         [
@@ -29,16 +33,21 @@ returns current temperature in celsius and farenheit.
             }
         ]
 
-## Rain [/rain]
+## Rain [/houses/{house_id}/rain]
 
 ### Get Next 24 Hours Raining Forecast [GET]
 
 returns "yes" or "no" whether it will rain in the next 24 hours.
 
++ Parameter
+    + house_id (required, string, `"d28f9e91-ea20-43cf-abf5-24f3d659afef"`)
+    String returned in Location header field.
+    
+
 + Response 200 (application/json)
 
         [
             {
-                "rain": "yes"
+                "_": "yes"
             }
         ]
