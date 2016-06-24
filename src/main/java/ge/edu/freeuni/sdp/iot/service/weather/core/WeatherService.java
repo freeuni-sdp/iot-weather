@@ -1,11 +1,8 @@
 package ge.edu.freeuni.sdp.iot.service.weather.core;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.jayway.jsonpath.JsonPath;
-import jdk.nashorn.internal.parser.JSONParser;
-import org.json.simple.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
