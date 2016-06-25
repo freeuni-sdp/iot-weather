@@ -30,14 +30,7 @@ public class WeatherService {
 
     private void setRainChance(RainInfo info, String coordinates){
         try {
-            URL url = new URL("http://api.wunderground.com/api/147c55ed4df9f4cf/hourly/q/" + coordinates + ".json"); // TODO constantebshi
-            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-            String json = "";
-            String part;
-            while (null != (part = br.readLine())) {
-                json += part;
-            }
-
+            String json = getJsonText("http://api.wunderground.com/api/147c55ed4df9f4cf/hourly/q/" + coordinates + ".json"); // TODO gaitane constantebshi
             String value = "no";
 
             for (int i = 0; i < 24; i++){
@@ -64,17 +57,9 @@ public class WeatherService {
 
     private void setTemperature(TemperatureInfo info, String coordinates){
         try {
-            URL url = new URL("http://api.wunderground.com/api/147c55ed4df9f4cf/conditions/q/" + coordinates + ".json"); // TODO constantebshi
-            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-            String json = "";
-            String part;
-            while (null != (part = br.readLine())) {
-                json += part;
-            }
-
+            String json = getJsonText("http://api.wunderground.com/api/147c55ed4df9f4cf/conditions/q/" + coordinates + ".json"); // TODO constantebshi
             int temp_c = JsonPath.read(json, "$.current_observation.temp_c");
             int temp_f = JsonPath.read(json, "$.current_observation.temp_f");
-
             info.setCelsius(temp_c);
             info.setFahrenheit(temp_f);
 
@@ -86,15 +71,9 @@ public class WeatherService {
     private String getCoordinates(String house_id){
         String changed_coordinates = "";
         try {
-            URL url = new URL("http://private-3c24-iothouseregistry.apiary-mock.com/houses/" + house_id); // TODO constantebshi
-            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-            String json = "";
-            String part;
-            while (null != (part = br.readLine())) {
-                json += part;
-            }
-
+            String json = getJsonText("http://private-3c24-iothouseregistry.apiary-mock.com/houses/" + house_id); // TODO gaitane constantebshi
             String coordinates = JsonPath.read(json, "$.geo_location._");
+
             int len = coordinates.length();
             for (int i = 0; i < len; i++) {
                 char c = coordinates.charAt(i);
@@ -109,6 +88,21 @@ public class WeatherService {
             ex.printStackTrace();
         }
         return changed_coordinates;
+    }
+
+    String getJsonText(String address){
+        String json = "";
+        try {
+            URL url = new URL(address);
+            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+            String part;
+            while (null != (part = br.readLine())) {
+                json += part;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return json;
     }
 
 
