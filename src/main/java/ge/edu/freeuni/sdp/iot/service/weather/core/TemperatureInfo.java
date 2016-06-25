@@ -14,6 +14,8 @@ public class TemperatureInfo {
         this.fahrenheit = fahrenheit;
     }
 
+    public TemperatureInfo(){}
+
     public int getCelsius() {
         return celsius;
     }

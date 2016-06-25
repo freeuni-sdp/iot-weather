@@ -9,6 +9,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class RainInfo {
 
+    public RainInfo(){
+
+    }
+
     public RainInfo(String value){
         this.value = value;
     }

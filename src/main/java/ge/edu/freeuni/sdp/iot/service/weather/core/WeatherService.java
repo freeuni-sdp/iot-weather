@@ -22,6 +22,7 @@ public class WeatherService {
     @GET
     @Path("{house_id}/temperature")
     public TemperatureInfo getTemperatureInfo(@PathParam("house_id") String house_id, TemperatureInfo info){
+        info = new TemperatureInfo();
         String coordinates = getCoordinates(house_id);
         setTemperature(info, coordinates);
         return info;
@@ -37,11 +38,11 @@ public class WeatherService {
                 json += part;
             }
 
-            float temp_c = JsonPath.read(json, "$.current_observation.temp_c");
-            float temp_f = JsonPath.read(json, "$.current_observation.temp_f");
+            int temp_c = JsonPath.read(json, "$.current_observation.temp_c");
+            int temp_f = JsonPath.read(json, "$.current_observation.temp_f");
 
-            info.setCelsius(Math.round(temp_c));
-            info.setFahrenheit(Math.round(temp_f));
+            info.setCelsius(temp_c);
+            info.setFahrenheit(temp_f);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -59,8 +60,7 @@ public class WeatherService {
                 json += part;
             }
 
-            JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
-            String coordinates = jsonObject.get("geo_location").getAsString();
+            String coordinates = JsonPath.read(json, "$.geo_location._");
             int len = coordinates.length();
             for (int i = 0; i < len; i++) {
                 char c = coordinates.charAt(i);

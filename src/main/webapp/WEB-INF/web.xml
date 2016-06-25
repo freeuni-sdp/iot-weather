@@ -7,7 +7,7 @@
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>ge.edu.freeuni.sdp.weather.core;com.fasterxml.jackson.jaxrs.json</param-value>
+            <param-value>ge.edu.freeuni.sdp.iot.service.weather;com.fasterxml.jackson.jaxrs.json</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
