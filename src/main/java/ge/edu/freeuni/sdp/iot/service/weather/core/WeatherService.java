@@ -20,6 +20,40 @@ import java.net.URL;
 public class WeatherService {
 
     @GET
+    @Path("{house_id}/rain")
+    public RainInfo getRainInfo(@PathParam("house_id") String house_id, RainInfo info){
+        info = new RainInfo();
+        String coordinates = getCoordinates(house_id);
+        setRainChance(info, coordinates);
+        return info;
+    }
+
+    private void setRainChance(RainInfo info, String coordinates){
+        try {
+            URL url = new URL("http://api.wunderground.com/api/147c55ed4df9f4cf/hourly/q/" + coordinates + ".json"); // TODO constantebshi
+            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+            String json = "";
+            String part;
+            while (null != (part = br.readLine())) {
+                json += part;
+            }
+
+            String value = "no";
+
+            for (int i = 0; i < 24; i++){
+                String id = String.valueOf(i);
+                String weather_condition = JsonPath.read(json, "$.hourly_forecast[" + id + "].condition");
+                if (weather_condition.contains("Rain") || weather_condition.contains("RAIN") || weather_condition.contains("rain"))
+                    value = "yes";
+            }
+
+            info.setValue(value);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @GET
     @Path("{house_id}/temperature")
     public TemperatureInfo getTemperatureInfo(@PathParam("house_id") String house_id, TemperatureInfo info){
         info = new TemperatureInfo();
