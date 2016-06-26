@@ -1,7 +1,7 @@
 /**
  * Created by Meko on 10/06/2016.
  */
-import ge.edu.freeuni.sdp.iot.service.weather.core.PingService;
+import ge.edu.freeuni.sdp.iot.service.weather.service.PingService;
 
 import javax.ws.rs.core.*;
 import static org.junit.Assert.*;
