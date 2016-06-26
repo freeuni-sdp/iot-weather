@@ -1,4 +1,4 @@
-package ge.edu.freeuni.sdp.iot.service.weather.core;
+package ge.edu.freeuni.sdp.iot.service.weather.service;
 
 /**
  * Created by Tornike on 24.06.2016.

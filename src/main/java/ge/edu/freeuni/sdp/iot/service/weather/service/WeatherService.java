@@ -1,7 +1,5 @@
-package ge.edu.freeuni.sdp.iot.service.weather.core;
+package ge.edu.freeuni.sdp.iot.service.weather.service;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.jayway.jsonpath.JsonPath;
 
 import javax.ws.rs.*;
@@ -10,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import static ge.edu.freeuni.sdp.iot.service.weather.service.Constants.*;
 /**
  * Created by Tornike on 24.06.2016.
  */
@@ -30,7 +29,7 @@ public class WeatherService {
 
     private void setRainChance(RainInfo info, String coordinates){
         try {
-            String json = getJsonText("http://api.wunderground.com/api/147c55ed4df9f4cf/hourly/q/" + coordinates + ".json"); // TODO gaitane constantebshi
+            String json = getJsonText(HOURLY_FOREST_URL + coordinates + ".json");
             String value = "no";
 
             for (int i = 0; i < 24; i++){
@@ -57,7 +56,7 @@ public class WeatherService {
 
     private void setTemperature(TemperatureInfo info, String coordinates){
         try {
-            String json = getJsonText("http://api.wunderground.com/api/147c55ed4df9f4cf/conditions/q/" + coordinates + ".json"); // TODO constantebshi
+            String json = getJsonText(WEATHER_CONDITIONS_URL + coordinates + ".json");
             int temp_c = JsonPath.read(json, "$.current_observation.temp_c");
             int temp_f = JsonPath.read(json, "$.current_observation.temp_f");
             info.setCelsius(temp_c);
@@ -71,7 +70,7 @@ public class WeatherService {
     private String getCoordinates(String house_id){
         String changed_coordinates = "";
         try {
-            String json = getJsonText("http://private-3c24-iothouseregistry.apiary-mock.com/houses/" + house_id); // TODO gaitane constantebshi
+            String json = getJsonText(HOUSE_SERVICE_URL  + house_id);
             String coordinates = JsonPath.read(json, "$.geo_location._");
 
             int len = coordinates.length();
