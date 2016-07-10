@@ -10,5 +10,6 @@ public final class Constants {
             "http://api.wunderground.com/api/147c55ed4df9f4cf/conditions/q/";
     public static final String HOURLY_FOREST_URL =
             "http://api.wunderground.com/api/147c55ed4df9f4cf/hourly/q/";
-
+    public static final String WEATHER_API_URL =
+            "http://iot-weather.herokuapp.com/webapi/houses/";
 }
