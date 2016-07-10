@@ -20,8 +20,8 @@ public class WeatherService {
 
     @GET
     @Path("{house_id}/rain")
-    public RainInfo getRainInfo(@PathParam("house_id") String house_id, RainInfo info){
-        info = new RainInfo();
+    public RainInfo getRainInfo(@PathParam("house_id") String house_id){
+        RainInfo info = new RainInfo();
         String coordinates = getCoordinates(house_id);
         setRainChance(info, coordinates);
         return info;
@@ -47,8 +47,8 @@ public class WeatherService {
 
     @GET
     @Path("{house_id}/temperature")
-    public TemperatureInfo getTemperatureInfo(@PathParam("house_id") String house_id, TemperatureInfo info){
-        info = new TemperatureInfo();
+    public TemperatureInfo getTemperatureInfo(@PathParam("house_id") String house_id){
+        TemperatureInfo info = new TemperatureInfo();
         String coordinates = getCoordinates(house_id);
         setTemperature(info, coordinates);
         return info;
@@ -61,7 +61,6 @@ public class WeatherService {
             int temp_f = JsonPath.read(json, "$.current_observation.temp_f");
             info.setCelsius(temp_c);
             info.setFahrenheit(temp_f);
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
