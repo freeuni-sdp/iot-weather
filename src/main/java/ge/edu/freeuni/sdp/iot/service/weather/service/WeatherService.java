@@ -88,7 +88,7 @@ public class WeatherService {
         return changed_coordinates;
     }
 
-    String getJsonText(String address){
+    public static String getJsonText(String address){
         String json = "";
         try {
             URL url = new URL(address);
