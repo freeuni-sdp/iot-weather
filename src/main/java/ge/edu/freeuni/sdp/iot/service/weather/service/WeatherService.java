@@ -39,7 +39,7 @@ public class WeatherService {
                     value = "yes";
             }
 
-            info.setValue(value);
+            info.setRain(value);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -59,8 +59,8 @@ public class WeatherService {
             String json = getJsonText(WEATHER_CONDITIONS_URL + coordinates + ".json");
             int temp_c = JsonPath.read(json, "$.current_observation.temp_c");
             int temp_f = JsonPath.read(json, "$.current_observation.temp_f");
-            info.setCelsius(temp_c);
-            info.setFahrenheit(temp_f);
+            info.setTemp_c(temp_c);
+            info.setTemp_f(temp_f);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

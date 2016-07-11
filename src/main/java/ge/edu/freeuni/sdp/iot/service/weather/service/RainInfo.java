@@ -14,26 +14,26 @@ public class RainInfo {
     }
 
     public RainInfo(String value){
-        this.value = value;
+        this.rain = value;
     }
 
     @XmlElement (name = "rain")
-    private String value; // "yes" or "no"
+    private String rain; // "yes" or "no"
 
-    public String getValue() {
-        return value;
+    public String getRain() {
+        return rain;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setRain(String rain) {
+        this.rain = rain;
     }
 
     @Override
     public int hashCode() {
-        if (value == null)
+        if (rain == null)
             return 0;
         else
-            return value.hashCode();
+            return rain.hashCode();
     }
 
     @Override
@@ -45,10 +45,10 @@ public class RainInfo {
         if (getClass() != obj.getClass())
             return false;
         RainInfo other = (RainInfo) obj;
-        if (value == null) {
-            if (other.value != null)
+        if (rain == null) {
+            if (other.rain != null)
                 return false;
-        } else if (!value.equals(other.getValue()))
+        } else if (!rain.equals(other.getRain()))
             return false;
         return true;
     }

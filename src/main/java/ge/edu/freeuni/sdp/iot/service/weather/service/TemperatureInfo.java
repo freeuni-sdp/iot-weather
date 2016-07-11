@@ -10,41 +10,41 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TemperatureInfo {
 
     public TemperatureInfo(int celsius, int fahrenheit){
-        this.celsius = celsius;
-        this.fahrenheit = fahrenheit;
+        this.temp_c = celsius;
+        this.temp_f = fahrenheit;
     }
 
     public TemperatureInfo(){}
 
-    public int getCelsius() {
-        return celsius;
-    }
-
-    public void setCelsius(int celsius) {
-        this.celsius = celsius;
-    }
 
     @XmlElement(name = "temp_c")
-    private int celsius;
-
-    public int getFahrenheit() {
-        return fahrenheit;
-    }
-
-    public void setFahrenheit(int fahrenheit) {
-        this.fahrenheit = fahrenheit;
-    }
+    private int temp_c;
 
     @XmlElement(name = "temp_f")
-    private int fahrenheit;
+    private int temp_f;
 
+    public int getTemp_f() {
+        return temp_f;
+    }
+
+    public void setTemp_f(int temp_f) {
+        this.temp_f = temp_f;
+    }
+
+    public int getTemp_c() {
+        return temp_c;
+    }
+
+    public void setTemp_c(int temp_c) {
+        this.temp_c = temp_c;
+    }
 
     @Override
     public int hashCode() {
         final int prime = 1000;
         int result = 1;
-        result = prime * result + celsius;
-        result = prime * result + fahrenheit;
+        result = prime * result + temp_c;
+        result = prime * result + temp_f;
         return result;
     }
 
@@ -57,6 +57,6 @@ public class TemperatureInfo {
         if (getClass() != obj.getClass())
             return false;
         TemperatureInfo other = (TemperatureInfo) obj;
-        return celsius == other.getCelsius() && fahrenheit == other.getFahrenheit();
+        return temp_c == other.getTemp_c() && temp_f == other.getTemp_f();
     }
 }
