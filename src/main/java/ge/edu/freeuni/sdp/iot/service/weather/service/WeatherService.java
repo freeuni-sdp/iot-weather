@@ -57,10 +57,10 @@ public class WeatherService {
     private void setTemperature(TemperatureInfo info, String coordinates){
         try {
             String json = getJsonText(WEATHER_CONDITIONS_URL + coordinates + ".json");
-            int temp_c = JsonPath.read(json, "$.current_observation.temp_c");
-            int temp_f = JsonPath.read(json, "$.current_observation.temp_f");
-            info.setTemp_c(temp_c);
-            info.setTemp_f(temp_f);
+            double temp_c = JsonPath.read(json, "$.current_observation.temp_c");
+            double temp_f = JsonPath.read(json, "$.current_observation.temp_f");
+            info.setTemp_c((int)temp_c);
+            info.setTemp_f((int)temp_f);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
