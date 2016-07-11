@@ -72,15 +72,17 @@ public class WeatherService {
             String json = getJsonText(HOUSE_SERVICE_URL  + house_id);
             String coordinates = JsonPath.read(json, "$.geo_location._");
 
-            int len = coordinates.length();
-            for (int i = 0; i < len; i++) {
-                char c = coordinates.charAt(i);
-                if (c == '.')
-                    changed_coordinates += ',';
-                else if (c == ',')
-                    changed_coordinates += '.';
-                else
-                    changed_coordinates += c;
+            if (coordinates.indexOf('.') > coordinates.indexOf(',')) {
+                int len = coordinates.length();
+                for (int i = 0; i < len; i++) {
+                    char c = coordinates.charAt(i);
+                    if (c == '.')
+                        changed_coordinates += ',';
+                    else if (c == ',')
+                        changed_coordinates += '.';
+                    else
+                        changed_coordinates += c;
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
