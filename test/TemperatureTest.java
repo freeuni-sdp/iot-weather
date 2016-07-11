@@ -1,8 +1,10 @@
 import com.jayway.jsonpath.JsonPath;
 import ge.edu.freeuni.sdp.iot.service.weather.service.WeatherService;
+import org.apache.log4j.BasicConfigurator;
 import org.easymock.Mock;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
+import org.junit.Before;
 import org.junit.Test;
 
 import javax.ws.rs.core.Application;
@@ -27,6 +29,11 @@ public class TemperatureTest extends JerseyTest {
 
     protected Application configure() {
         return new ResourceConfig(WeatherService.class);
+    }
+
+    @Before
+    public void setup(){
+        BasicConfigurator.configure();
     }
 
     @Test
