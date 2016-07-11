@@ -1,4 +1,3 @@
-
 import com.jayway.jsonpath.JsonPath;
 import ge.edu.freeuni.sdp.iot.service.weather.service.WeatherService;
 import org.easymock.Mock;
@@ -7,9 +6,12 @@ import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
 import javax.ws.rs.core.Application;
+import java.util.Map;
 
 import static ge.edu.freeuni.sdp.iot.service.weather.service.Constants.HOUSE_SERVICE_URL;
 import static ge.edu.freeuni.sdp.iot.service.weather.service.Constants.WEATHER_API_URL;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Meko on 10/07/2016.
@@ -35,10 +37,11 @@ public class TemperatureTest extends JerseyTest {
             json = WeatherService.getJsonText(WEATHER_API_URL + houseID + "/temperature");
             int f = JsonPath.read(json, "$.fahrenheit");
             int c = JsonPath.read(json, "$.celsius");
-            assert(c > -100 && c < 65 && f > -130 && f < 140);
+            Map a = JsonPath.read(json, "$");
+            assertEquals(a.size(), 2);
         }
         catch (Exception ex) {
-            assert(false);
+            assertTrue(false);
         }
     }
 
