@@ -83,7 +83,9 @@ public class WeatherService {
                     else
                         changed_coordinates += c;
                 }
-            }
+            }else
+                changed_coordinates = coordinates;
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
