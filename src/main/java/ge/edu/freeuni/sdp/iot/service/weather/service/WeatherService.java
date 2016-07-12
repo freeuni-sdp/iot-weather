@@ -23,6 +23,9 @@ public class WeatherService {
     public RainInfo getRainInfo(@PathParam("house_id") String house_id){
         RainInfo info = new RainInfo();
         String coordinates = getCoordinates(house_id);
+        if (coordinates.equals("")){
+            throw new BadRequestException();
+        }
         setRainChance(info, coordinates);
         return info;
     }
@@ -50,6 +53,9 @@ public class WeatherService {
     public TemperatureInfo getTemperatureInfo(@PathParam("house_id") String house_id){
         TemperatureInfo info = new TemperatureInfo();
         String coordinates = getCoordinates(house_id);
+        if (coordinates.equals("")){
+            throw new BadRequestException();
+        }
         setTemperature(info, coordinates);
         return info;
     }
