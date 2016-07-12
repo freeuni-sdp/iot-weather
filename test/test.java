@@ -10,7 +10,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 public class test extends JerseyTest{
-/*
+
     @Override
     protected Application configure() {
         return new ResourceConfig(PingService.class);
@@ -23,5 +23,5 @@ public class test extends JerseyTest{
                 Response.Status.OK.getStatusCode(),
                 actual.getStatus());
     }
-*/
+
 }

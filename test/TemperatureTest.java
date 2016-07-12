@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 
 public class TemperatureTest extends JerseyTest {
-/*
+
     @Mock
     private WeatherService weather_service;
     private String houseID;
@@ -57,5 +57,5 @@ public class TemperatureTest extends JerseyTest {
         int status = target("houses/jumberiko/temperature").request().get().getStatus();
         assertEquals(400, status);
     }
-*/
+
 }
