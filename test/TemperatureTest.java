@@ -52,4 +52,10 @@ public class TemperatureTest extends JerseyTest {
         }
     }
 
+    @Test
+    public void bad_request_test(){
+        int status = target("houses/jumberiko/temperature").request().get().getStatus();
+        assertEquals(400, status);
+    }
+
 }

@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.ws.rs.core.Application;
+import javax.ws.rs.core.Response;
 import java.util.Map;
 
 import static ge.edu.freeuni.sdp.iot.service.weather.service.Constants.HOUSE_SERVICE_URL;
@@ -43,5 +44,11 @@ public class RainTest extends JerseyTest{
         catch (Exception ex) {
             assertTrue(false);
         }
+    }
+
+    @Test
+    public void bad_request_test(){
+        int status = target("houses/gela/rain").request().get().getStatus();
+        assertEquals(400, status);
     }
 }
