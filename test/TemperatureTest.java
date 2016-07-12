@@ -41,6 +41,8 @@ public class TemperatureTest extends JerseyTest {
         try {
             String json = WeatherService.getJsonText(HOUSE_SERVICE_URL);
             String houseID = JsonPath.read(json, "$[0].RowKey._");
+            int status = target("/houses/" + houseID + "/temperature").request().get().getStatus();
+            assertEquals(200, status);
             json = WeatherService.getJsonText(WEATHER_API_URL + houseID + "/temperature");
             int f = JsonPath.read(json, "$.temp_f");
             int c = JsonPath.read(json, "$.temp_c");

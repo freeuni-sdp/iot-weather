@@ -35,6 +35,8 @@ public class RainTest extends JerseyTest{
         try {
             String json = WeatherService.getJsonText(HOUSE_SERVICE_URL);
             String houseID = JsonPath.read(json, "$[0].RowKey._");
+            int status = target("/houses/" + houseID + "/rain").request().get().getStatus();
+            assertEquals(200, status);
             json = WeatherService.getJsonText(WEATHER_API_URL + houseID + "/rain");
             String rain_value = JsonPath.read(json, "$.rain");
             assertTrue(rain_value.equals("yes") || rain_value.equals("no"));
