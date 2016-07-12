@@ -45,6 +45,7 @@ public class WeatherService {
             info.setRain(value);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new BadRequestException();
         }
     }
 
@@ -69,6 +70,7 @@ public class WeatherService {
             info.setTemp_f((int)Math.round(temp_f));
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new BadRequestException();
         }
     }
 
