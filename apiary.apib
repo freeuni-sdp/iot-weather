@@ -18,12 +18,15 @@ Returns html status code 200, if the server is alive.
 
 ### Get Current Temperature [GET]
 
-returns current temperature in celsius and farenheit.
+if house_id is valid returns current temperature in celsius and farenheit.
+if house_id is not valid returns error 400.
 
 + Parameter
     + house_id (required, string, `a1bc00fb-4724-476a-a553-d65d2c1bac0e`)
     String returned in Location header field.
     
++ Request (application/json)
+
 + Response 200 (application/json)
 
         [
@@ -32,17 +35,23 @@ returns current temperature in celsius and farenheit.
                 "temp_f": "59"
             }
         ]
+        
++ Request (application/json)
+
++ Response 400 (application/json)
 
 ## Rain [/houses/{house_id}/rain]
 
 ### Get Next 24 Hours Raining Forecast [GET]
 
-returns "yes" or "no" whether it will rain in the next 24 hours.
+if house_id is valid returns "yes" or "no" whether it will rain in the next 24 hours.
+if house_id is not valid returns error 400.
 
 + Parameter
     + house_id (required, string, `a1bc00fb-4724-476a-a553-d65d2c1bac0e`)
     String returned in Location header field.
-    
+
++ Request (application/json)
 
 + Response 200 (application/json)
 
@@ -51,3 +60,7 @@ returns "yes" or "no" whether it will rain in the next 24 hours.
                 "rain": "yes"
             }
         ]
+        
++ Request (application/json)
+
++ Response 400 (application/json)
